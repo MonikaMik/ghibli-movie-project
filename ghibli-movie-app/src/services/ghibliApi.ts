@@ -1,17 +1,21 @@
 import type { Film, Person } from '../types/ghibli';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const api = createApi({
-	baseQuery: fetchBaseQuery({ baseUrl: `https://ghibliapi.vercel.app/` }),
-	endpoints: build => ({
-		filmsList: build.query<Film[], void>({
-			query: () => `films`
+export const ghibliApi = createApi({
+	reducerPath: 'ghibliApi',
+	baseQuery: fetchBaseQuery({
+		baseUrl: 'https://ghibliapi.vercel.app/'
+	}),
+	endpoints: builder => ({
+		getFilms: builder.query<Film[], void>({
+			query: () => 'films'
 		}),
-		peopleList: build.query<Person, { id: string }>({
-			query: ({ id }) => `people/${id}`
+
+		getPerson: builder.query<Person, string>({
+			query: personUrl => personUrl
 		})
 	})
 });
 
-export const { useFilmsListQuery, usePeopleListQuery } = api;
-export default api;
+export const { useGetFilmsQuery, useLazyGetPersonQuery } = ghibliApi;
+export default ghibliApi;

@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import api from './services/ghibliApi';
+import ghibliApi from './services/ghibliApi';
 
 export const store = configureStore({
 	reducer: {
-		[api.reducerPath]: api.reducer
+		[ghibliApi.reducerPath]: ghibliApi.reducer
 	},
 	middleware: getDefaultMiddleware =>
-		getDefaultMiddleware().concat(api.middleware)
+		getDefaultMiddleware().concat(ghibliApi.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;

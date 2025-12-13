@@ -1,31 +1,43 @@
-import { useFilmsListQuery } from '../services/ghibliApi';
-import type { Film } from '../types/ghibli';
+import { useGetFilmsQuery } from '../services/ghibliApi';
+import { useFilmPeople } from '../hooks/useFilmPeople';
+import PeopleTable from '../components/PeopleTable';
+import FilmCard from '../components/FilmCard';
+import styles from './Films.module.css';
 
-function Films() {
-	const { data, isLoading, isError, isUninitialized } =
-		useFilmsListQuery(undefined);
+const Films = () => {
+	const { data: films, isLoading, error: filmsError } = useGetFilmsQuery();
+	const { people, activeFilmId, loading, error, fetchPeople } = useFilmPeople();
 
-	if (isLoading || isUninitialized) {
-		return <p>Loading films...</p>;
-	}
-
-	if (isError) {
-		return <p>Error loading films. Please try again later.</p>;
-	}
+	if (isLoading) return <p>Loading films...</p>;
+	if (filmsError) return <p>Error loading films</p>;
 
 	return (
 		<article>
 			<h1>Films</h1>
-			<ul>
-				{data.map((film: Film) => (
+
+			<ul className={styles.filmList}>
+				{films?.map(film => (
 					<li key={film.id}>
-						<h2>{film.title}</h2>
-						<p>{film.description}</p>
-						<p>Release Date: {film.release_date}</p>
+						<FilmCard film={film} />
+						<button onClick={() => fetchPeople(film)}>Show people</button>
+						{activeFilmId === film.id && loading && <p>Loading people...</p>}
 					</li>
 				))}
 			</ul>
+
+			{activeFilmId && !loading && (
+				<section aria-label='People in selected film'>
+					{error ? (
+						<p>{error}</p>
+					) : people.length > 0 ? (
+						<PeopleTable people={people} />
+					) : (
+						<p>No people to display</p>
+					)}
+				</section>
+			)}
 		</article>
 	);
-}
+};
+
 export default Films;

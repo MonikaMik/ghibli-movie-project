@@ -1,0 +1,6 @@
+.filmList {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 2rem;
+	overflow-x: scroll;
+}
