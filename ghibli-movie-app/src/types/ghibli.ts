@@ -12,5 +12,4 @@ export interface Person {
 	gender?: string;
 	age?: string;
 	eye_color?: string;
-	films?: string[];
 }

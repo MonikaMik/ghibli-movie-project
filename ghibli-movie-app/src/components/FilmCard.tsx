@@ -5,10 +5,10 @@ export default function FilmCard({ film }: { film: Film }) {
 	return (
 		<div className={styles.card}>
 			<h2>{film.title}</h2>
-			<p>
-				<strong>Release Date:</strong> {film.release_date}
-			</p>
-			<p>{film.description}</p>
+			<p className={styles.releaseDate}>{film.release_date}</p>
+			<div className={styles.descriptionContainer}>
+				<p className={styles.description}>{film.description}</p>
+			</div>
 		</div>
 	);
 }

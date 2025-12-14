@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './Aside.module.css';
 
 export default function Aside() {
@@ -7,20 +7,26 @@ export default function Aside() {
 			<nav>
 				<ul>
 					<li>
-						<Link
-							className={`${styles.navLink}`}
+						<NavLink
 							to='/'
+							className={({ isActive }) =>
+								`${styles.navLink} ${isActive ? styles.active : ''}`
+							}
 						>
 							About
-						</Link>
+							<span className='material-symbols-outlined'>arrow_forward</span>
+						</NavLink>
 					</li>
 					<li>
-						<Link
-							className={`${styles.navLink}`}
+						<NavLink
 							to='/films'
+							className={({ isActive }) =>
+								`${styles.navLink} ${isActive ? styles.active : ''}`
+							}
 						>
 							Films
-						</Link>
+							<span className='material-symbols-outlined'>arrow_forward</span>
+						</NavLink>
 					</li>
 				</ul>
 			</nav>
