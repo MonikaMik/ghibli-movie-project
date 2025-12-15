@@ -20,6 +20,12 @@
 	height: 100%;
 }
 
+.infoText {
+	margin: 1rem 0;
+	font-size: 1.2rem;
+	color: var(--color-text);
+}
+
 button {
 	padding: 0.8rem 1rem;
 	font-size: 0.9rem;

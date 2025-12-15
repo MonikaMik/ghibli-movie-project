@@ -95,13 +95,23 @@ const Films = () => {
 					aria-live='polite'
 				>
 					{loading ? (
-						<p role='status'>Loading people...</p>
+						<p
+							className={styles.infoText}
+							role='status'
+						>
+							Loading people...
+						</p>
 					) : error ? (
-						<p role='alert'>{error}</p>
+						<p
+							className={styles.infoText}
+							role='alert'
+						>
+							{error}
+						</p>
 					) : people.length > 0 ? (
 						<PeopleTable people={people} />
 					) : (
-						<p>No people to display</p>
+						<p className={styles.infoText}>No people to display</p>
 					)}
 				</section>
 			)}
