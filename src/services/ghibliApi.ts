@@ -12,7 +12,7 @@ export const ghibliApi = createApi({
 		}),
 
 		getPerson: builder.query<Person, string>({
-			query: personUrl => personUrl
+			query: id => `people/${id}`
 		})
 	})
 });
