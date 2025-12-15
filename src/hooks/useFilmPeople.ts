@@ -31,7 +31,7 @@ export const useFilmPeople = () => {
 		setLoading(true);
 		try {
 			const result = await Promise.all(
-				film.people.map(url => getPerson(url).unwrap())
+				film.people.map((url: string) => getPerson(url).unwrap())
 			);
 			setPeopleCache(prev => ({ ...prev, [film.id]: result }));
 		} catch (err) {

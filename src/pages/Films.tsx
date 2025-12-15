@@ -70,7 +70,7 @@ const Films = () => {
 				className={styles.filmList}
 				role='list'
 			>
-				{films?.map(film => (
+				{films?.map((film: Film) => (
 					<li
 						key={film.id}
 						className={styles.filmContainer}

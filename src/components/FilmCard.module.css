@@ -10,11 +10,6 @@
 	min-width: 20rem;
 	overflow: hidden;
 	flex: 1;
-	&:hover {
-		transform: scale(1.01);
-		box-shadow: var(--shadow-hover);
-		transition: all 0.2s;
-	}
 }
 
 .releaseDate {
