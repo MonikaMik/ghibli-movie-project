@@ -23,7 +23,12 @@ the [Ghibli API](https://ghibliapi.vercel.app/).
 ### Installation
 
 ```bash
-cd ghibli-movie-app
+git clone https://github.com/MonikaMik/ghibli-movie-project.git
+```
+
+### Installation
+
+```bash
 npm install
 ```
 
