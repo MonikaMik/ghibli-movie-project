@@ -1,6 +1,8 @@
+import styles from './About.module.css';
+
 export default function About() {
 	return (
-		<article>
+		<article className={styles.about}>
 			<h1>About Page</h1>
 			<p>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga officia,

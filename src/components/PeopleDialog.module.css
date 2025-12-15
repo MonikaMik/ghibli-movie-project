@@ -23,8 +23,6 @@
 
 .closeButton {
 	position: sticky;
-	top: 0.4rem;
-	right: 0.4rem;
 	padding: 0.1rem 0.4rem;
 	background: transparent;
 	border: none;
