@@ -1,6 +1,6 @@
 import About from './pages/About';
 import Films from './pages/Films';
-import Aside from './components/Aside';
+import Navigation from './components/Navigation';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import styles from './App.module.css';
 
@@ -8,7 +8,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<div className={styles.appContainer}>
-				<Aside />
+				<Navigation />
 				<main className={styles.main}>
 					<Routes>
 						<Route

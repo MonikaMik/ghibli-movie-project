@@ -16,7 +16,6 @@ the [Ghibli API](https://ghibliapi.vercel.app/).
 - **Redux Toolkit** for state management (RTK Query for API calls)
 - **React Router** for navigation
 - **CSS Modules** for styling
-- **Vitest** for testing
 
 ## Getting Started
 
@@ -73,4 +72,4 @@ Minimal tests included to verify core components render correctly:
 
 - FilmCard component
 - PeopleTable component
-- Navigation (Aside component)
+- Navigation component

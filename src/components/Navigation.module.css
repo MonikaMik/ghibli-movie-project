@@ -1,4 +1,4 @@
-aside {
+.navigation {
 	position: sticky;
 	width: 15%;
 	height: 100vh;
@@ -41,7 +41,7 @@ aside {
 
 /* tablet */
 @media (max-width: 1024px) {
-	aside {
+	.navigation {
 		width: 20%;
 		padding: 1.5rem;
 	}
@@ -49,13 +49,13 @@ aside {
 
 /* mobile */
 @media (max-width: 768px) {
-	aside {
+	.navigation {
 		width: 100%;
 		height: auto;
 		padding: 1rem;
 	}
 
-	aside ul {
+	.navigation ul {
 		display: flex;
 		flex-direction: row;
 		gap: 1rem;
