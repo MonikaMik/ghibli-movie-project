@@ -34,8 +34,11 @@ export const useFilmPeople = () => {
 				film.people.map(url => getPerson(url).unwrap())
 			);
 			setPeopleCache(prev => ({ ...prev, [film.id]: result }));
-		} catch {
-			setError('Failed to load people for this film.');
+		} catch (err) {
+			console.error('Error fetching people:', err);
+			setError(
+				'Failed to load characters. Please check your connection and try again.'
+			);
 		} finally {
 			setLoading(false);
 		}

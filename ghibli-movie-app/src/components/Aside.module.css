@@ -2,7 +2,7 @@ aside {
 	position: sticky;
 	width: 15%;
 	height: 100vh;
-	background-color: #002346;
+	background-color: var(--color-primary);
 	padding: 2rem;
 	ul {
 		list-style: none;

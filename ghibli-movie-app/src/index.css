@@ -1,6 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
+:root {
+	/* Colors */
+	--color-primary: #002346;
+	--color-text: #333;
+	--color-background: #f5f5f5;
+	--color-white: #fff;
+	--color-card-bg: #e7e7e7;
+	--color-card-bg-light: #f2f2f2;
+	--color-border: #ddd;
+	--color-border-dark: #000;
+	--color-error-bg: #fee;
+	--color-scrollbar: #ccc;
+
+	/* Shadows */
+	--shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+	--shadow-hover: 0 0 80px -25px rgba(0, 0, 0, 0.5);
+
+	/* Backdrop */
+	--backdrop-color: rgba(0, 0, 0, 0.5);
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -16,6 +37,6 @@ body,
 body {
 	font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont,
 		sans-serif;
-	background-color: #f5f5f5;
-	color: #333;
+	background-color: var(--color-background);
+	color: var(--color-text);
 }

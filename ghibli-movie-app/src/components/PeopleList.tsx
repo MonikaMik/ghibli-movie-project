@@ -1,11 +1,11 @@
 import type { Person } from '../types/ghibli';
 import styles from './PeopleList.module.css';
 
-interface Props {
+interface PeopleListProps {
 	people: Person[];
 }
 
-const PeopleList = ({ people }: Props) => {
+export default function PeopleList({ people }: PeopleListProps) {
 	return (
 		<ul className={styles.list}>
 			{people.map((person, index) => (
@@ -35,6 +35,4 @@ const PeopleList = ({ people }: Props) => {
 			))}
 		</ul>
 	);
-};
-
-export default PeopleList;
+}

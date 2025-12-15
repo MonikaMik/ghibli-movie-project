@@ -1,7 +1,11 @@
 import type { Film } from '../types/ghibli';
 import styles from './FilmCard.module.css';
 
-export default function FilmCard({ film }: { film: Film }) {
+interface FilmCardProps {
+	film: Film;
+}
+
+export default function FilmCard({ film }: FilmCardProps) {
 	return (
 		<div className={styles.card}>
 			<h2>{film.title}</h2>

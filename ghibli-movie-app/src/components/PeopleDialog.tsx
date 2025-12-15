@@ -22,7 +22,9 @@ export default function PeopleDialog({
 
 	useEffect(() => {
 		if (isOpen) {
+			const scrollY = window.scrollY;
 			dialogRef.current?.showModal();
+			window.scrollTo(0, scrollY);
 		} else {
 			dialogRef.current?.close();
 		}
@@ -35,19 +37,26 @@ export default function PeopleDialog({
 			onClick={e => {
 				if (e.currentTarget === e.target) onClose();
 			}}
+			aria-labelledby='dialog-title'
+			aria-modal='true'
 		>
 			<button
 				onClick={onClose}
 				className={styles.closeButton}
-				aria-label='Close'
+				aria-label='Close dialog'
 			>
 				✕
 			</button>
 
 			{loading ? (
-				<p>Loading people...</p>
+				<p
+					role='status'
+					aria-live='polite'
+				>
+					Loading people...
+				</p>
 			) : error ? (
-				<p>{error}</p>
+				<p role='alert'>{error}</p>
 			) : people.length > 0 ? (
 				<PeopleList people={people} />
 			) : (

@@ -1,11 +1,11 @@
 import type { Person } from '../types/ghibli';
 import styles from './PeopleTable.module.css';
 
-interface Props {
+interface PeopleTableProps {
 	people: Person[];
 }
 
-const PeopleTable = ({ people }: Props) => {
+export default function PeopleTable({ people }: PeopleTableProps) {
 	return (
 		<table className={styles.table}>
 			<caption>Film Characters</caption>
@@ -31,5 +31,4 @@ const PeopleTable = ({ people }: Props) => {
 			</tbody>
 		</table>
 	);
-};
-export default PeopleTable;
+}

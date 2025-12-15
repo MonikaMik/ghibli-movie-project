@@ -8,10 +8,10 @@
 }
 
 .item {
-	background: #f2f2f2;
+	background: var(--color-card-bg-light);
 	border-radius: 8px;
 	padding: 1rem;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: var(--shadow);
 }
 
 .item h3 {
@@ -22,7 +22,7 @@
 	display: flex;
 	justify-content: space-between;
 	font-size: 0.9rem;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid var(--color-border);
 	padding: 0.25rem 0;
 }
 

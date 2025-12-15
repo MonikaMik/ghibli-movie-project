@@ -29,15 +29,47 @@ const Films = () => {
 		setActiveFilmId(null);
 	};
 
-	if (isLoading) return <p>Loading films...</p>;
-	if (filmsError) return <p>Error loading films</p>;
+	if (isLoading) {
+		return (
+			<article aria-busy='true'>
+				<h1>Films</h1>
+				<p role='status'>Loading films...</p>
+			</article>
+		);
+	}
+
+	if (filmsError) {
+		return (
+			<article>
+				<h1>Films</h1>
+				<div
+					role='alert'
+					className={styles.errorBox}
+				>
+					<p>
+						<strong>Error:</strong> Unable to load films. Please check your
+						internet connection and try again.
+					</p>
+					<button
+						onClick={() => window.location.reload()}
+						className={styles.retryButton}
+					>
+						Retry
+					</button>
+				</div>
+			</article>
+		);
+	}
 
 	return (
 		<article>
 			<h1>Films</h1>
 
 			{/* Films list */}
-			<ul className={styles.filmList}>
+			<ul
+				className={styles.filmList}
+				role='list'
+			>
 				{films?.map(film => (
 					<li
 						key={film.id}
@@ -47,6 +79,8 @@ const Films = () => {
 						<button
 							onClick={() => handleShowPeopleClick(film)}
 							className={activeFilmId === film.id ? styles.active : ''}
+							aria-label={`Show characters from ${film.title}`}
+							aria-pressed={activeFilmId === film.id}
 						>
 							Show people
 						</button>
@@ -56,11 +90,14 @@ const Films = () => {
 
 			{/* Desktop table */}
 			{!isMobile && activeFilmId && (
-				<section aria-label='People in selected film'>
+				<section
+					aria-label='People in selected film'
+					aria-live='polite'
+				>
 					{loading ? (
-						<p>Loading people...</p>
+						<p role='status'>Loading people...</p>
 					) : error ? (
-						<p>{error}</p>
+						<p role='alert'>{error}</p>
 					) : people.length > 0 ? (
 						<PeopleTable people={people} />
 					) : (
@@ -70,9 +107,9 @@ const Films = () => {
 			)}
 
 			{/* Mobile dialog */}
-			{isMobile && (
+			{isMobile && activeFilmId && (
 				<PeopleDialog
-					isOpen={!!activeFilmId}
+					isOpen={true}
 					loading={loading}
 					error={error}
 					people={people}

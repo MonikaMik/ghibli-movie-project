@@ -13,7 +13,7 @@ th {
 }
 
 th {
-	background-color: #e3e3e3;
+	background-color: var(--color-card-bg);
 }
 
 caption {
