@@ -1,8 +1,8 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useGetFilmsQuery } from '../services/ghibliApi';
 import { useFilmPeople } from '../hooks/useFilmPeople';
 import FilmCard from '../components/FilmCard';
-import PeopleList from '../components/PeopleList';
+import PeopleDialog from '../components/PeopleDialog';
 import PeopleTable from '../components/PeopleTable';
 import styles from './Films.module.css';
 import type { Film } from '../types/ghibli';
@@ -12,10 +12,8 @@ const Films = () => {
 	const { people, activeFilmId, setActiveFilmId, loading, error, fetchPeople } =
 		useFilmPeople();
 
-	const dialogRef = useRef<HTMLDialogElement>(null);
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-	// Update isMobile on resize
 	useEffect(() => {
 		const mediaQuery = window.matchMedia('(max-width: 768px)');
 		const handleResize = (e: MediaQueryListEvent) => setIsMobile(e.matches);
@@ -23,20 +21,11 @@ const Films = () => {
 		return () => mediaQuery.removeEventListener('change', handleResize);
 	}, []);
 
-	// Open dialog when selecting a film on mobile
-	useEffect(() => {
-		if (isMobile && activeFilmId) {
-			dialogRef.current?.showModal();
-		}
-	}, [activeFilmId, isMobile]);
-
 	const handleShowPeopleClick = (film: Film) => {
 		fetchPeople(film);
-		setActiveFilmId(film.id);
 	};
 
 	const handleCloseDialog = () => {
-		dialogRef.current?.close();
 		setActiveFilmId(null);
 	};
 
@@ -81,32 +70,14 @@ const Films = () => {
 			)}
 
 			{/* Mobile dialog */}
-			{isMobile && activeFilmId && (
-				<dialog
-					ref={dialogRef}
-					className={styles.peopleDialog}
-					onClick={e => {
-						if (e.currentTarget === e.target) handleCloseDialog();
-					}}
-				>
-					<button
-						onClick={handleCloseDialog}
-						className={styles.closeButton}
-						aria-label='Close'
-					>
-						✕
-					</button>
-
-					{loading ? (
-						<p>Loading people...</p>
-					) : error ? (
-						<p>{error}</p>
-					) : people.length > 0 ? (
-						<PeopleList people={people} />
-					) : (
-						<p>No people to display</p>
-					)}
-				</dialog>
+			{isMobile && (
+				<PeopleDialog
+					isOpen={!!activeFilmId}
+					loading={loading}
+					error={error}
+					people={people}
+					onClose={handleCloseDialog}
+				/>
 			)}
 		</article>
 	);

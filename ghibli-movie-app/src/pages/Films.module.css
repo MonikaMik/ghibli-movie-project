@@ -40,44 +40,6 @@
 	}
 }
 
-.peopleDialog {
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 90%;
-	max-width: 400px;
-	max-height: 80vh;
-	padding: 1rem;
-	border: none;
-	border-radius: 12px;
-	background-color: #fff;
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-	flex-direction: column;
-	overflow-y: auto;
-	z-index: 1000;
-	display: flex;
-}
-
-.peopleDialog::backdrop {
-	background: rgba(0, 0, 0, 0.5);
-}
-
-.closeButton {
-	position: absolute;
-	top: 0.5rem;
-	right: 0.5rem;
-	padding: 0.1rem;
-	background: transparent;
-	border: none;
-	font-size: 1.2rem;
-	cursor: pointer;
-	align-self: flex-end;
-	&:hover {
-		transform: scale(1.2);
-	}
-}
-
 /* tablet */
 @media (max-width: 1024px) {
 	.filmContainer {
